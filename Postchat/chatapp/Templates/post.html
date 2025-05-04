@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+    body {
+    background: linear-gradient(360deg,  #b7def5,  #b7def5);
+    height: 100vh;
+    display: -ms-flexbox;
+    justify-content: center;
+    align-items: center;
+  }
+    .chatbox {
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      width: 30%;
+      padding: 10px;
+    }
+    .comment {
+      padding: 10px;
+    }
+    </style>
+    <h3 class="text-center m-5 text-primary">Add on Post</h3>
+    <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-3 col-lg-3">
+            <form action="/feed" method="post" enctype="multipart/form-data">
+                {% csrf_token %}       
+                <div class="mb-3">
+                  <label for="comment" class="form-label">Comment</label>
+                  <input type="text" class="form-control" name="comment" placeholder="Enter Comment" required />
+                </div>
+                <div class="mb-3">
+                  <label for="file" class="form-label">Photo</label>
+                  <input type="file" class="form-control" name="post" placeholder="Choose File" required />
+                </div>
+                  <button type="submit" class="btn btn-success">Post</button> <button type="reset" class="btn btn-danger">Clear</button>
+                  <br><br>
+                <p class="text-center">
+                  Already an account? <a href="/" class="text-decoration-none">Sign in</a>
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+{% endblock %}
